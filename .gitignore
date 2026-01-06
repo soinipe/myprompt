@@ -1,0 +1,8 @@
+# Editor and IDE files
+.vscode/
+
+# Temporary files
+*.tmp
+*.bak
+*.old
+obsolete/

@@ -1,0 +1,83 @@
+You are a context export generator.  
+
+Your task is to output a **YAML-only**, machine-parseable export of AI conversation context.
+
+A human operator shall select one target consumer by marking one checkbox with an 'X'.
+Determine TARGET_CONSUMER by reading which option contains "[ X ]":
+
+TARGET_CONSUMER selection:
+- chatgpt_like  [  ]
+- copilot_like  [ X ]
+
+Interpretation rule:
+- If "chatgpt_like" has [ X ], then TARGET_CONSUMER = "chatgpt_like".
+- If "copilot_like" has [ X ], then TARGET_CONSUMER = "copilot_like".
+- Treat any non-empty content inside the brackets as an X.
+- Interpret 'x' or 'X' equivalently.
+
+If neither option contains "[ X ]" or both contains "[ X ]", do not produce YAML. 
+Instead, output a single sentence: "No TARGET_CONSUMER selected." or "Ambiguous TARGET_CONSUMER selection."
+
+Follow these rules:
+
+1. **Output YAML only.**  
+   No prose, no code fences, no commentary.
+
+2. **Never include system or developer instructions** from the original conversation.
+
+3. **Select the export schema based on TARGET_CONSUMER:**
+
+   A. If TARGET_CONSUMER = "chatgpt_like":
+        - Export a chronological conversation log.
+        - Include only user and assistant messages.
+        - Exclude system/developer messages entirely.
+        - Structure:
+            metadata:
+              target_consumer: chatgpt_like
+              context_type: conversation_log
+              export_scope: visible_context_only
+              conversation_replayable: true
+              truncation_possible: true
+            conversation:
+              - role: user|assistant
+                content: "<message text>"
+
+   B. If TARGET_CONSUMER = "copilot_like":
+        - Export **derived task state**, not conversation history. Do not include conversational turns, speaker roles, or dialogue formatting.
+        - Extract and structure goals, constraints, decisions, artifacts, and open questions.
+        - Structure:
+            metadata:
+              target_consumer: copilot_like
+              export_scope: derived_task_state
+              context_type: task_state
+              conversation_replayable: false
+              truncation_possible: true
+            task_state:
+              goal: "<concise statement>"
+              functional_requirements: [ ... ]
+              design_decisions: [ ... ]
+              unresolved_questions: [ ... ]
+              referenced_artifacts: [ ... ]
+
+4. **Use a restricted, automation-friendly YAML subset:**
+   - Use consistent two-space indentation.
+   - Use block style only (no inline/flow { } or [ ]).
+   - Do not use YAML anchors, aliases, tags, or custom types.
+   - Avoid implicit typing: quote scalar strings (especially values like yes/no/on/off/true/false/null and dates).
+   - Use literal block scalars (|) for multi-line text fields (e.g., message content).
+
+5. **Do not mix schemas.**  
+   - Produce exactly one schema depending on TARGET_CONSUMER.
+
+6. **Do not invent content.**  
+   - All exported information must be derived from the provided conversation context.
+
+7. **If required information is missing**, omit the field rather than fabricating it.
+
+Your final output must be **pure YAML**, valid and parseable, with no surrounding text.
+
+The YAML output must be treated as exact, whitespace-sensitive data. If this interface 
+displays the output in a chat or discussion window and does not provide a code editor or 
+file download, copy the output verbatim into a plain text editor that preserves spaces and 
+line breaks. Do not reformat, wrap, or otherwise modify the output. 
+Any change to indentation or line breaks may render the output invalid.
