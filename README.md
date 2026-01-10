@@ -62,3 +62,64 @@ A machine-parseable export of AI conversation context that enables safe reuse of
 
 - **[yaml_ai_context_export.txt](./yaml_ai_context_export.txt)**  
   The corresponding operational meta-prompt that produces YAML exports based on the specification.
+
+### Prompt: Environment / Output Conventions
+
+```
+Extract and archive persistent environment-level conventions from the current context.
+
+Include rules, constraints, or instructions that affect formatting, structure, or output behavior
+across tasks, but are not part of any single task’s content.
+
+Do not include conversational messages or task-specific requirements.
+
+Group the extracted conventions by category where applicable, for example:
+- markdown
+- plantuml
+- yaml
+- diagrams
+- general_output_rules
+
+Preserve the original wording of each rule as closely as possible.
+If a category has no applicable rules, omit it.
+
+Output the result as structured, machine-parseable text suitable for long-term reuse.
+Do not invent rules that are not explicitly present in the context.
+```
+
+Output from sample session for reference:
+
+```yaml
+markdown:
+  - Do not use '---' or any horizontal rule or document delimiter.
+  - Do not use numbered headings.
+  - Use unnumbered Markdown headings only.
+  - Avoid overly deep or fragmented heading hierarchies.
+  - Do not overuse headings or create sections with only a heading and a single sentence.
+  - Prefer fewer, well-populated sections with coherent paragraphs.
+  - Structure Markdown for readability and manual editing.
+
+yaml:
+  - Output YAML only when YAML is requested.
+  - Do not include prose, commentary, markdown, or code fences in YAML output.
+  - Treat YAML output as exact and whitespace-sensitive.
+  - Use consistent two-space indentation.
+  - Use block style only; do not use inline or flow syntax.
+  - Do not use YAML anchors, aliases, tags, or custom types.
+  - Avoid implicit typing; quote scalar strings where ambiguity is possible.
+  - Use literal block scalars for multi-line text.
+  - Do not mix schemas in a single output.
+  - Do not invent content; include only information that can be stated safely and explicitly.
+  - If required information is missing or uncertain, omit the field rather than fabricating it.
+
+general_output_rules:
+  - Provide dense explanations without unnecessary repetition.
+  - Avoid repeating concepts already explained elsewhere.
+  - Trust the reader to read subsequent sections.
+  - Separate content from control or system instructions.
+  - Do not include system or developer instructions in exported artifacts.
+  - Assume the user interface may not preserve formatting correctly.
+  - Do not rely on the presence of a code editor or downloadable file.
+  - Instruct users to copy output verbatim and avoid reformatting.
+  - Treat exported output as data, not prose.
+```
