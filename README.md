@@ -17,57 +17,57 @@ The goal of this repository is to treat prompts as **reusable interfaces**, not 
 
 The "State-Save" prompt is needed to address issue Copilot's short chat memory limit (as of 2026). The problem is sudden stop of chat with message "Sorry, this conversation has reached its limit". Before a chat hits its limit, ask Copilot:
 
-### Prompt - Context saving prompts
+### Prompt - Context saving prompt
 ```
 Summarize our progress, the current code state, and the next steps into a concise paragraph I can use to start our next session
 ```
 ```
 Here is our current context. Compress it into <= 1200 characters while preserving all constraints and decisions.
 ```
-```
-# Copilot Handoff Notes – Prompt Template
 
+### Prompt - Handoff Notes
+```
 Generate **handoff notes** for continuing this work in a **new Copilot chat with no prior context**.
 
-## Requirements
-- Be concise but complete
-- Assume the next Copilot session knows nothing
-- Optimize for fast re-orientation and minimal re-explaining
-- Prefer bullets over prose
-- Do not repeat code unless essential
+- Requirements
+  - Be concise but complete
+  - Assume the next Copilot session knows nothing
+  - Optimize for fast re-orientation and minimal re-explaining
+  - Prefer bullets over prose
+  - Do not repeat code unless essential
 
-## Output Format
+- Output Format
 
-### 1. Problem / Goal
+1. Problem / Goal
 - One-paragraph summary of the objective
 
-### 2. Current State
+2. Current State
 - What has been implemented or changed
 - What is working
 - What is incomplete or broken
 
-### 3. Key Technical Context
+3. Key Technical Context
 - Language, framework, tools
 - Relevant modules/files (path + purpose)
 - Important constraints or assumptions
 
-### 4. Decisions Made (with rationale)
+4. Decisions Made (with rationale)
 - Decision → reason
 
-### 5. Open Issues / Risks
+5. Open Issues / Risks
 - Bugs, edge cases, technical debt, unknowns
 
-### 6. Next Concrete Steps
+6. Next Concrete Steps
 - Ordered, actionable steps
 - Mention exact files, functions, or commands where applicable
 
-### 7. Paste-Back Context (for next chat)
+7. Paste-Back Context (for next chat)
 - Compact summary (≤ 10 bullets) to paste at the start of the next chat
 - Must restore enough context to continue immediately
 ```
-```
-# Copilot Handoff Notes – Ultra-Short Version
 
+### Copilot Handoff Notes – Ultra-Short Version
+```
 Summarize this session as **handoff notes** for a new Copilot chat.
 
 Output exactly:
@@ -80,8 +80,6 @@ Output exactly:
 - Next 3 concrete steps
 - Context to paste next time (≤ 8 bullets)
 ```
-
-
 
 ### Prompt - Markdown formatting rules
 
@@ -192,4 +190,27 @@ general_output_rules:
   - Do not rely on the presence of a code editor or downloadable file.
   - Instruct users to copy output verbatim and avoid reformatting.
   - Treat exported output as data, not prose.
+```
+
+## Copilot Notebook prompts
+
+### Create document
+```
+Create a new document in this notebook called "Handoff Notes".
+Populate it using the current notebook content.
+Structure it so it can be continuously updated over time.```
+```
+### Update document
+```
+Update the "Handoff Notes" document in this notebook:
+- Reflect the latest decisions and current state
+- Remove outdated information
+- Highlight what changed since the previous version
+Use this notebook as the source of truth.
+```
+### Reconcile sources
+```
+Compare the documents and notes in this notebook.
+Update the "Decisions & Rationale" document so it reflects the current agreed state.
+List any conflicts you cannot resolve.
 ```
