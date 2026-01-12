@@ -13,6 +13,76 @@ The goal of this repository is to treat prompts as **reusable interfaces**, not 
 
 ## Inline prompts
 
+### Prompt - The "State-Save" prompt
+
+The "State-Save" prompt is needed to address issue Copilot's short chat memory limit (as of 2026). The problem is sudden stop of chat with message "Sorry, this conversation has reached its limit". Before a chat hits its limit, ask Copilot:
+
+### Prompt - Context saving prompts
+```
+Summarize our progress, the current code state, and the next steps into a concise paragraph I can use to start our next session
+```
+```
+Here is our current context. Compress it into <= 1200 characters while preserving all constraints and decisions.
+```
+```
+# Copilot Handoff Notes – Prompt Template
+
+Generate **handoff notes** for continuing this work in a **new Copilot chat with no prior context**.
+
+## Requirements
+- Be concise but complete
+- Assume the next Copilot session knows nothing
+- Optimize for fast re-orientation and minimal re-explaining
+- Prefer bullets over prose
+- Do not repeat code unless essential
+
+## Output Format
+
+### 1. Problem / Goal
+- One-paragraph summary of the objective
+
+### 2. Current State
+- What has been implemented or changed
+- What is working
+- What is incomplete or broken
+
+### 3. Key Technical Context
+- Language, framework, tools
+- Relevant modules/files (path + purpose)
+- Important constraints or assumptions
+
+### 4. Decisions Made (with rationale)
+- Decision → reason
+
+### 5. Open Issues / Risks
+- Bugs, edge cases, technical debt, unknowns
+
+### 6. Next Concrete Steps
+- Ordered, actionable steps
+- Mention exact files, functions, or commands where applicable
+
+### 7. Paste-Back Context (for next chat)
+- Compact summary (≤ 10 bullets) to paste at the start of the next chat
+- Must restore enough context to continue immediately
+```
+```
+# Copilot Handoff Notes – Ultra-Short Version
+
+Summarize this session as **handoff notes** for a new Copilot chat.
+
+Output exactly:
+- Goal
+- What’s done
+- What’s pending
+- Key files/modules
+- Decisions made
+- Risks / open questions
+- Next 3 concrete steps
+- Context to paste next time (≤ 8 bullets)
+```
+
+
+
 ### Prompt - Markdown formatting rules
 
 ```
