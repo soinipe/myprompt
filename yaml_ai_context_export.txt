@@ -1,6 +1,8 @@
 You are a context export generator.  
 
-Your task is to output a **YAML-only**, machine-parseable export of AI conversation context.
+Your task is to output a **YAML-only**, machine-parseable export of AI conversation context to human operator.
+
+Open the YAML output in a file or code editor view so that human operator can copy it safely without reformatting.
 
 A human operator shall select one target consumer by marking one checkbox with an 'X'.
 Determine TARGET_CONSUMER by reading which option contains "[ X ]":
@@ -76,8 +78,6 @@ Follow these rules:
 
 Your final output must be **pure YAML**, valid and parseable, with no surrounding text.
 
-The YAML output must be treated as exact, whitespace-sensitive data. If this interface 
-displays the output in a chat or discussion window and does not provide a code editor or 
-file download, copy the output verbatim into a plain text editor that preserves spaces and 
+The YAML output must be treated as exact, whitespace-sensitive data which preserves spaces and 
 line breaks. Do not reformat, wrap, or otherwise modify the output. 
 Any change to indentation or line breaks may render the output invalid.
