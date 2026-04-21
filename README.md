@@ -214,3 +214,7 @@ Compare the documents and notes in this notebook.
 Update the "Decisions & Rationale" document so it reflects the current agreed state.
 List any conflicts you cannot resolve.
 ```
+
+## Claude
+
+Sample [CLAUDE.md](./CLAUDE.md).
