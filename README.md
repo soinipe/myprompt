@@ -19,10 +19,12 @@ The "State-Save" prompt is needed to address issue Copilot's short chat memory l
 
 ### Prompt - Context saving prompt
 ```
-Summarize our progress, the current code state, and the next steps into a concise paragraph I can use to start our next session
+Summarize our progress, the current code state, and the next steps into a concise
+paragraph I can use to start our next session
 ```
 ```
-Here is our current context. Compress it into <= 1200 characters while preserving all constraints and decisions.
+Here is our current context. Compress it into <= 1200 characters while preserving
+all constraints and decisions.
 ```
 
 ### Prompt - Handoff Notes
@@ -93,16 +95,20 @@ When producing Markdown output, follow these rules strictly:
 - Preserve readability and allow for manual editing and reordering of sections.
 - Ensure the Markdown renders correctly in common preview tools without relying on special extensions.
 
-The goal is to produce clean, portable Markdown that is easy to read, edit, and maintain across different tools and environments.
+The goal is to produce clean, portable Markdown that is easy to read, edit, and maintain across
+different tools and environments.
 ```
 
 ### Prompt - Markdown style
 
 ```
-When generating Markdown, avoid overly deep or fragmented hierarchies. Do not overuse headings, and avoid structures where sections contain only a heading and a single sentence. Prefer fewer, well-populated sections with coherent paragraphs over many short, repetitive sections.
+When generating Markdown, avoid overly deep or fragmented hierarchies. Do not overuse headings,
+and avoid structures where sections contain only a heading and a single sentence.
+Prefer fewer, well-populated sections with coherent paragraphs over many short, repetitive sections.
 ```
 ```
-Provide a dense explanation. Avoid repeating concepts already explained elsewhere and trust the reader to read subsequent sections.
+Provide a dense explanation. Avoid repeating concepts already explained elsewhere and
+trust the reader to read subsequent sections.
 ```
 
 ### Prompt - File download, copy&paste
@@ -114,7 +120,8 @@ Produce the output as a downloadable file without modifying its content.
 Open the output in a file or code editor view so it can be copied without reformatting.
 ```
 ```
-Output as plain text exactly as generated, without markdown formatting, line wrapping, or additional explanation. Preserve all spaces and line breaks.
+Output as plain text exactly as generated, without markdown formatting, line wrapping, or
+additional explanation. Preserve all spaces and line breaks.
 ```
 
 ## More complex prompt specifications
