@@ -11,7 +11,7 @@ approaches could be improved in future work. Keep the document concise and focus
 that would genuinely help future you, and update it after meaningful changes such as new 
 features, major decisions, or resolved issues.
 
-## Text File Encoding
+# Text File Encoding
 
 All text files in this repository MUST contain 7-bit ASCII only (bytes 0x00-0x7F).
 This applies to source code, Markdown, configuration files, scripts, documentation, and other text-based files.
