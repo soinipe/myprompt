@@ -21,3 +21,14 @@ This applies to source code, Markdown, configuration files, scripts, documentati
 - Use `-` instead of en/em dashes, straight quotes instead of curly quotes, and `...` instead of the ellipsis character.
 - Do not use emoji or decorative Unicode characters.
 - Before creating or modifying a text file, ensure all added content is 7-bit ASCII.
+
+# Markdown Style
+
+When producing Markdown, use clean, portable Markdown that remains easy to read, edit, and reorder.
+Do not use horizontal rules or document delimiters such as ---, and do not number headings. 
+Use unnumbered headings (#, ##, ###, etc.) sparingly; avoid deep or fragmented hierarchies and 
+sections containing only a heading and a single sentence. Prefer fewer, well-populated 
+sections with coherent paragraphs, using bullet lists and code blocks where appropriate. 
+Keep explanations dense and avoid unnecessary repetition. 
+Prefer portable Markdown; avoid renderer-specific extensions except 
+Mermaid diagrams shall be used for illustrations and clarifications.
