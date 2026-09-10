@@ -10,3 +10,14 @@ Include a short reflection on how the AI was used, what worked well or poorly, a
 approaches could be improved in future work. Keep the document concise and focused on insights 
 that would genuinely help future you, and update it after meaningful changes such as new 
 features, major decisions, or resolved issues.
+
+## Text File Encoding
+
+All text files in this repository MUST contain 7-bit ASCII only (bytes 0x00-0x7F).
+This applies to source code, Markdown, configuration files, scripts, documentation, and other text-based files.
+
+- Do not introduce Unicode or other non-ASCII characters.
+- Use plain ASCII equivalents for punctuation and symbols.
+- Use `-` instead of en/em dashes, straight quotes instead of curly quotes, and `...` instead of the ellipsis character.
+- Do not use emoji or decorative Unicode characters.
+- Before creating or modifying a text file, ensure all added content is 7-bit ASCII.
