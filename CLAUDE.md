@@ -31,3 +31,8 @@ and sections containing only a heading and a single sentence. Prefer fewer, well
 sections with coherent paragraphs. Use bullet lists and code blocks where appropriate. 
 Keep explanations dense and avoid unnecessary repetition. Avoid renderer-specific Markdown 
 extensions, except Mermaid. Use Mermaid diagrams where they improve illustration or clarification.
+
+# Tabs
+
+All output files that contain text must not use TABs but space.
+Exception are files which are by nature having TABs like CSV.
